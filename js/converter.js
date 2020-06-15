@@ -1,25 +1,75 @@
+/** to do:
+/
+/  - error box for invalid string of characters, greater than L(3) maybe 
+/
+/  - Katakana functionality
+/
+/  - refactor
+/
+/  - deal with spaces in english to kana conversion
+/       - maybe deal with other characters
+*/
+
+
+
 let textBox = document.getElementById('textbox');
-let outputBox = document.getElementById('output');
-
-function checkConvert(){
-    let output = outputBox.value;
-    if(hLookup[textBox.value]){
-       // alert('found');
-       output = output+hLookup[textBox.value];
-       textBox.value="";
-    } else {
-       // alert ('not found');
-    }
+let hiraganaBox = document.getElementById('hiragana');
+let katakanaBox = document.getElementById('katakana');
 
 
-    outputBox.value = output;
+function convertText(){
+    //keep output the same if already converted   
+    let text = textBox.value.split('');
+    let nonConv = '';
+    let conv = '';
+    let hiragana = '';
+    let n = false;
+    
+    text.forEach(kana => {
+        nonConv = nonConv + kana;
+
+        // check if need to convert to NX kana
+        if(n){
+            if(['na','ni','nu','no','nn','ne','nya','nyo','nyu'].includes(nonConv)){
+                hiragana = hiragana.substring(0,hiragana.length-1);
+                n = false;
+            }
+        }
+
+        // check nonConv == 'n' to maybe convert to NX kana
+        if(nonConv == 'n'){
+            n = true;
+        }
+
+        // check for double consonants
+       if (nonConv[0]==[nonConv[1]]){
+           if(nonConv !='nn'){
+               hiragana += hLookup['xtsu'];
+            } 
+            nonConv = nonConv[0];
+        } 
+
+
+
+        if(hLookup[nonConv]){
+            hiragana += hLookup[nonConv];
+            conv = conv + nonConv;
+
+            //leave value as 'n' to check for NX kana
+            if(nonConv != 'n')
+                nonConv = '';
+        } 
+        
+    })
+    hiraganaBox.value = hiragana;
+    console.log(conv + ' has been converted.');
+    console.log(nonConv + ' hasn\'t been converted');
 }
 
 
 
 
 //add code to find double consonants
-//add code to deal with 'n' or 'nn' or 'n[x]'
 let kLookup = {
     "a":"ア",
     "i":"イ",
@@ -67,6 +117,7 @@ let kLookup = {
     "wa":"ワ",
     "wo":"ヲ",
     "n":"ン",
+    "nn":"ン",
     //
     "ga":"ガ",
     "gi":"ギ",
@@ -195,6 +246,7 @@ let hLookup = {
     "wa":"わ",
     "wo":"を",
     "n":"ん",
+    "nn":"ん",
     //
     "ga":"が",
     "gi":"ぎ",
@@ -277,4 +329,4 @@ let hLookup = {
 };
 
 
-textBox.addEventListener('input',checkConvert);
+textBox.addEventListener('input',convertText);
