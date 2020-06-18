@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Kana Converter!</title>
 </head>
-<body>
 
-    <input type="text" id="textbox" name="textbox" size="50"><br>
-    <input type="text" id="hiragana" name="hiragana" size="50"><br>
-    <input type="text" id="katakana" name="katakana" size="50"><br>
+<body>
+    <div id='button-div'>
+        <button type="button" id="hiragana-button">Hiragana</button>
+        <button type="button" id="katakana-button">Katakana</button>
+    </div>
+
+    <div id="romaji-div">
+        <label for="textbox">Romaji</label><br>
+        <input type="text" id="textbox" name="textbox" size="50">
+    </div>
+
+    <div id="hiragana-div">
+        <label for="hiragana">Hiragana</label><br>
+        <input type="text" id="hiragana" name="hiragana" size="50" readonly><br>
+    </div>
+
+    <div id="katakana-div">
+        <label for="katakana">Katakana</label><br>
+        <input type="text" id="katakana" name="katakana" size="50" readonly><br>
+    </div>
 
     <script src="js/converter.js"></script>
 </body>
+
 </html>

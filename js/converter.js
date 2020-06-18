@@ -1,13 +1,19 @@
+/**
+ * Writing this in vanilla JS and then converting into JQuery
+ * for demonstration purposes
+ */
+
 /** to do:
-/
-/  - error box for invalid string of characters, greater than L(3) maybe 
-/
-/  - Katakana functionality
-/
-/  - refactor
-/
-/  - deal with spaces in english to kana conversion
-/       - maybe deal with other characters
+ *
+ *  - error box for invalid string of characters, greater than L(3) maybe 
+ *
+ *  X Katakana functionality
+ *
+ *  - refactor 
+ *    - then comment out vanilla JS and convert to JQuery
+ *
+ *  X deal with spaces in english to kana conversion
+ *       X not needed, no spaces in romaji duh
 */
 
 
@@ -16,6 +22,9 @@ let textBox = document.getElementById('textbox');
 let hiraganaBox = document.getElementById('hiragana');
 let katakanaBox = document.getElementById('katakana');
 
+let hiraganaButton = document.getElementById('hiragana-button');
+let katakanaButton = document.getElementById('katakana-button');
+
 
 function convertText(){
     //keep output the same if already converted   
@@ -23,6 +32,7 @@ function convertText(){
     let nonConv = '';
     let conv = '';
     let hiragana = '';
+    let katakana = '';
     let n = false;
     
     text.forEach(kana => {
@@ -32,6 +42,7 @@ function convertText(){
         if(n){
             if(['na','ni','nu','no','nn','ne','nya','nyo','nyu'].includes(nonConv)){
                 hiragana = hiragana.substring(0,hiragana.length-1);
+                katakana = katakana.substring(0,katakana.length-1);
                 n = false;
             }
         }
@@ -45,6 +56,7 @@ function convertText(){
        if (nonConv[0]==[nonConv[1]]){
            if(nonConv !='nn'){
                hiragana += hLookup['xtsu'];
+               katakana += kLookup['xtsu'];
             } 
             nonConv = nonConv[0];
         } 
@@ -53,6 +65,7 @@ function convertText(){
 
         if(hLookup[nonConv]){
             hiragana += hLookup[nonConv];
+            katakana += kLookup[nonConv];
             conv = conv + nonConv;
 
             //leave value as 'n' to check for NX kana
@@ -62,12 +75,18 @@ function convertText(){
         
     })
     hiraganaBox.value = hiragana;
+    katakanaBox.value = katakana;
     console.log(conv + ' has been converted.');
     console.log(nonConv + ' hasn\'t been converted');
 }
 
+function hToggle(){
+    document.getElementById('hiragana-div').classList.toggle('hidden');
+}
 
-
+function kToggle(){
+    document.getElementById('katakana-div').classList.toggle('hidden');
+}
 
 //add code to find double consonants
 let kLookup = {
@@ -330,3 +349,5 @@ let hLookup = {
 
 
 textBox.addEventListener('input',convertText);
+hiraganaButton.addEventListener('click',hToggle);
+katakanaButton.addEventListener('click',kToggle);
