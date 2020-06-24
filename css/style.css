@@ -1,3 +1,58 @@
+body{
+    text-align: center;
+    margin: auto;
+    background-color: #26ccff;
+}
+
+
+div{
+    border: 1px solid red;
+}
+
+textarea{
+    width: 50%;
+    height: 150px;
+    box-sizing: border-box;
+    border: 10px solid #ffa126;
+    border-radius: 10px;
+    resize: none;
+}
+
+button {
+    border: none;
+    background-color: #ffa126;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 20px 40px;
+    margin: 20px;
+}
+
 .hidden {
     display: none;
 }
+
+.deselect{
+    background-color: #ff3426;
+}
+
+.container{
+    display: flex;
+}
+
+.left{
+    transform: translate(30%, 0);
+}
+/*
+label{
+    display: inline-block;
+    transform: translate(-500%, 0);
+}
+*/
+.right{
+    transform: translate(-30%, 0);
+}
+
+.flex-child {
+    flex-grow: 1;
+}
+

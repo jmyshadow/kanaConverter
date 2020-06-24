@@ -14,6 +14,10 @@
  *
  *  X deal with spaces in english to kana conversion
  *       X not needed, no spaces in romaji duh
+ *   
+ *   - figure out how to move text labels appropriately
+ * 
+ *  - animation when clicking button to slide text area growth?
 */
 
 
@@ -73,6 +77,12 @@ function convertText(){
                 nonConv = '';
         } 
         
+        if(nonConv.length > 3){
+            document.getElementById('error').classList.remove('hidden');
+        } else {
+            document.getElementById('error').classList.add('hidden');
+        }
+        
     })
     hiraganaBox.value = hiragana;
     katakanaBox.value = katakana;
@@ -82,10 +92,15 @@ function convertText(){
 
 function hToggle(){
     document.getElementById('hiragana-div').classList.toggle('hidden');
+    katakanaBox.classList.toggle('right');
+    this.classList.toggle('deselect');
+    
 }
 
 function kToggle(){
     document.getElementById('katakana-div').classList.toggle('hidden');
+    hiraganaBox.classList.toggle('left');
+    this.classList.toggle('deselect');
 }
 
 //add code to find double consonants
