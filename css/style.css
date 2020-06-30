@@ -42,12 +42,7 @@ button {
 .left{
     transform: translate(30%, 0);
 }
-/*
-label{
-    display: inline-block;
-    transform: translate(-500%, 0);
-}
-*/
+
 .right{
     transform: translate(-30%, 0);
 }
@@ -56,3 +51,12 @@ label{
     flex-grow: 1;
 }
 
+.flex-child label{
+    float: left;
+    transform: translateX(100%);
+}
+
+span{
+    display: inline-block;
+    transform: translateX(500%);
+}

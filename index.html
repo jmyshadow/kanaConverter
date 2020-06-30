@@ -13,8 +13,7 @@
     <h1>Convert Romaji into Kana</h1>
 
     <div id="romaji-div">
-        <label for="textbox">Romaji</label><br>
-        <textarea id="textbox" name="textbox" cols="50" rows="5"></textarea>
+        <textarea id="textbox" name="textbox" cols="50" rows="5">Enter Romaji Here</textarea>
         <br>
         <span class="error hidden" id="error">Invalid Input</span>
     </div>
@@ -26,14 +25,21 @@
 
     <div id="output-container" class="container">
         <div id="hiragana-div" class="flex-child">
-            <label for="hiragana" class="test">Hiragana</label><br>
             <textarea id="hiragana" name="hiragana" cols="50" rows="5" class="left" readonly></textarea><br>
         </div>
 
         <div id="katakana-div" class="flex-child">
-            <label for="katakana">Katakana</label><br>
             <textarea id="katakana" name="katakana" cols="50" rows="5" class="right" readonly></textarea><br>
         </div>
+    </div>
+        <div id="labels" class="container">
+            <div id="hiragana-label" class="flex-child">
+                <span>Hiragana</span>
+            </div>
+            <div id="katakana-label" class="flex-child">
+                <span>Katakana</span>
+            </div>
+
     </div>
 
     <script src="js/converter.js"></script>
