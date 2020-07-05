@@ -4,11 +4,6 @@ body{
     background-color: #26ccff;
 }
 
-
-div{
-    border: 1px solid red;
-}
-
 textarea{
     width: 50%;
     height: 150px;
@@ -51,12 +46,6 @@ button {
     flex-grow: 1;
 }
 
-.flex-child label{
-    float: left;
-    transform: translateX(100%);
-}
-
 span{
-    display: inline-block;
-    transform: translateX(500%);
+    display: block;
 }

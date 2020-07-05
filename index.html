@@ -13,7 +13,8 @@
     <h1>Convert Romaji into Kana</h1>
 
     <div id="romaji-div">
-        <textarea id="textbox" name="textbox" cols="50" rows="5">Enter Romaji Here</textarea>
+        <textarea id="textbox" name="textbox" cols="50" rows="5"
+        placeholder="Enter Romaji Here"></textarea>
         <br>
         <span class="error hidden" id="error">Invalid Input</span>
     </div>
@@ -34,10 +35,10 @@
     </div>
         <div id="labels" class="container">
             <div id="hiragana-label" class="flex-child">
-                <span>Hiragana</span>
+                <span id="hSpan">Hiragana</span>
             </div>
             <div id="katakana-label" class="flex-child">
-                <span>Katakana</span>
+                <span id="kSpan" class="right">Katakana</span>
             </div>
 
     </div>
